@@ -67,6 +67,7 @@ export const NavBar = ({ current, setCurrent }) => {
                 key={index}
               >
                 <img src={e.img} alt="img" />
+                {localStorage.getItem("user")}
               </Link>
             ) : (
               <div>
@@ -105,7 +106,7 @@ export const NavBar = ({ current, setCurrent }) => {
                     <div className="table-responsive">
                       <table className="table sm">
                         <thead>
-                          <th> Нэр</th>
+                          <th>Нэр</th>
                           <th>Тоо </th>
                         </thead>
                         <tbody>

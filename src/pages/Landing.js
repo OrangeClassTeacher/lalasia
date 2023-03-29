@@ -15,6 +15,8 @@ import axios from "axios";
 import { useContext, useEffect } from "react";
 import { CategoryContext, DataContext } from "../context/context";
 
+import { getProduct, getProducts } from "../service/productService";
+
 export const Landing = () => {
   const { setData, setFilterData } = useContext(DataContext);
   const { setCategory } = useContext(CategoryContext);
@@ -25,8 +27,9 @@ export const Landing = () => {
   }, []);
 
   const getData = () => {
-    axios
-      .get("http://localhost:9000/api/product")
+    const userId = "1";
+
+    getProducts(userId)
       .then((res) => {
         if (res.data.status) {
           setData(res.data.result);
@@ -38,7 +41,7 @@ export const Landing = () => {
 
   const getCategory = () => {
     axios
-      .get("http://localhost:9000/api/category")
+      .post("http://localhost:9000/api/category")
       .then((res) => {
         if (res.data.status) {
           setCategory(res.data.result);
